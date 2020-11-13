@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public Transform theDest;
+    public GameObject player;
+    public Transform destination;
 
     public bool isCarrying;
     public bool playThrow;
+
+    public Vector3 originalScale;
 
     void Start()
     {
@@ -17,28 +20,19 @@ public class PickUp : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && !isCarrying)
         {
-            playThrow = true;
-            OnPickup();
+            GetComponent<SphereCollider>().enabled = false;
+            GetComponent<Rigidbody>().useGravity = false;
+
+            this.transform.position = destination.position;
+            this.transform.parent = GameObject.Find("Destination").transform;
+
+            isCarrying = true;
             Debug.Log(isCarrying);
         }
 
-        
+        if (Input.GetMouseButtonDown(0) && isCarrying)
+        {
+            playThrow = true;
+        }
     }
-    void OnPickup()
-    {
-        GetComponent<SphereCollider>().enabled = false;
-        GetComponent<Rigidbody>().useGravity = false;
-        this.transform.position = theDest.position;
-        this.transform.parent = GameObject.Find("Destination").transform;
-
-        isCarrying = true;
-    }
-
-    /*void OnMouseUp()
-    {
-        this.transform.parent = null;
-        GetComponent<Rigidbody>().useGravity = true;
-        GetComponent<SphereCollider>().enabled = true;
-    }
-    */
 }

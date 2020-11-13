@@ -18,13 +18,13 @@ public class PlayerMovement : MonoBehaviour
 	float currentSpeed;
 	float velocityY;
 
-	public BallThrow ballThrow;
 	public PickUp pickUp;
-	public GameObject theBall;
+    public BallThrow ballThrow;
 
-	Animator animator;
-	Transform cameraT;
-	CharacterController controller;
+    public Animator animator;
+	public Transform cameraT;
+	public CharacterController controller;
+
 
 	void Start()
 	{
@@ -51,15 +51,16 @@ public class PlayerMovement : MonoBehaviour
 
 		if (!pickUp.playThrow)
 		{
-			animator.SetFloat("speedPercent", animationSpeedPercent, speedSmoothTime, Time.deltaTime);
+            animator.SetBool("playMovement", true);
+            animator.SetBool("playThrowBall", false);
+            animator.SetFloat("speedPercent", animationSpeedPercent, speedSmoothTime, Time.deltaTime);
 		}
 
 		if (pickUp.playThrow)
 		{
-			animator.SetInteger("ThrowBall", 1);
-			animator.SetFloat("speedPercent", 0);
-			Debug.Log("throw pls");
-		}
+            animator.SetBool("playMovement", false);
+            animator.SetBool("playThrowBall", true);
+        }
 	}
 
 	void Move(Vector2 inputDir, bool running)
@@ -108,10 +109,15 @@ public class PlayerMovement : MonoBehaviour
 		return smoothTime / airControlPercent;
 	}
 
-	void ThrowBall()
-	{
-		Debug.Log("Throwing");
-		theBall.GetComponent("BallThrow");
-		ballThrow.ReleaseMe();
-	}
+    public void Release()
+    {
+        ballThrow.ReleaseMe();
+        ballThrow.Throw();
+    }
+
+    public void StopAnimation()
+    {
+        pickUp.playThrow = false;
+        Debug.Log("Stopping anim");
+    }
 }

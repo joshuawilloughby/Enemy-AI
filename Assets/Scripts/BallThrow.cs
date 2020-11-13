@@ -5,22 +5,35 @@ using UnityEngine;
 public class BallThrow : MonoBehaviour
 {
     public GameObject parentBone;
+    public GameObject playerCamera;
+
+    public GameObject ball;
+
     public Rigidbody rig;
-    public Vector3 lastPos;
-    public Vector3 curVel;
+
+    public PickUp pickUp;
+
+    public int throwForce = 5000;
+   // public throwDirection 
 
     void Start()
     {
-        transform.parent = parentBone.transform;
-        rig.useGravity = false;
+        GetComponent<Rigidbody>().useGravity = true;
     }
 
     public void ReleaseMe()
     {
-        transform.parent = null;
+        this.transform.parent = null;
 
-        rig.useGravity = true;
-        transform.rotation = parentBone.transform.rotation;
-        rig.AddForce(transform.forward * 20000);
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<SphereCollider>().enabled = true;
     }
+
+    public void Throw()
+    {
+        GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
+        pickUp.isCarrying = false;
+
+        Debug.Log("Add Force");
+    } 
 }

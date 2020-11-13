@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7302238, g: 0.7889745, b: 0.8498578, a: 1}
+  m_IndirectSpecularColor: {r: 0.7302384, g: 0.7889801, b: 0.84985816, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31340
+  m_Name: pb_Mesh20278
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -306,16 +306,18 @@ MonoBehaviour:
   airControlPercent: 0
   turnSmoothTime: 0.15
   speedSmoothTime: 0.1
-  ballThrow: {fileID: 919132149600845838}
   pickUp: {fileID: 919132149600845837}
-  theBall: {fileID: 919132149600845836}
+  ballThrow: {fileID: 919132149600845838}
+  animator: {fileID: 919132149178094196}
+  cameraT: {fileID: 1874458216}
+  controller: {fileID: 919132149178094197}
 --- !u!43 &292571871
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31284
+  m_Name: pb_Mesh20230
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -479,7 +481,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31256
+  m_Name: pb_Mesh20194
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -643,7 +645,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31298
+  m_Name: pb_Mesh20244
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -807,7 +809,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31270
+  m_Name: pb_Mesh20212
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1598,36 +1600,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100, y: 0, z: 100}
   m_Center: {x: 50, y: 0, z: 50}
---- !u!1 &871981229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 871981230}
-  m_Layer: 0
-  m_Name: Destination
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &871981230
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 871981229}
-  m_LocalRotation: {x: 0.75907767, y: -0.46024546, z: -0.46024543, w: -0.012221412}
-  m_LocalPosition: {x: 0.001173361, y: -0.00089512585, z: -0.0023696097}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.010000001}
-  m_Children: []
-  m_Father: {fileID: 8738927999324559998}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1002904586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1926,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 110, y: 10, z: 2}
   m_Center: {x: 55, y: 5, z: -1}
+--- !u!1 &1077593366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077593367}
+  m_Layer: 0
+  m_Name: Destination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1077593367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077593366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.001491, y: 0.000896, z: -0.000759}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8738927999324559998}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1179778680
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2761,8 +2763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a36a51e985045418cd37e6565c4ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockCursor: 0
-  mouseSensitivity: 5
+  lockCursor: 1
+  mouseSensitivity: 8
   target: {fileID: 1655773782}
   dstFromTarget: 8
   pitchMinMax: {x: -40, y: 85}
@@ -3407,8 +3409,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149600845836}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3.855, y: 4.573, z: -6.391}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 2.977, y: 0.387, z: -3.61}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3632,9 +3634,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d34673c6e5b30049ad14112f441de12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theDest: {fileID: 871981230}
+  player: {fileID: 919132149178094195}
+  destination: {fileID: 1077593367}
   isCarrying: 0
   playThrow: 0
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!114 &919132149600845838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3647,10 +3651,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8de479ba037dd4f8f6af694029267c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentBone: {fileID: 871981229}
+  parentBone: {fileID: 919132149178094195}
+  playerCamera: {fileID: 1874458213}
+  ball: {fileID: 919132149600845836}
   rig: {fileID: 1179778681}
-  lastPos: {x: 0, y: 0, z: 0}
-  curVel: {x: 0, y: 0, z: 0}
+  pickUp: {fileID: 919132149600845837}
+  throwDistance: 2
+  throwForce: 5
 --- !u!4 &947290644881947715
 Transform:
   m_ObjectHideFlags: 0
@@ -5429,7 +5436,7 @@ Transform:
   - {fileID: 6618038984352576150}
   - {fileID: 1065207286462189697}
   - {fileID: 2452243738883106103}
-  - {fileID: 871981230}
+  - {fileID: 1077593367}
   m_Father: {fileID: 6476556287827822226}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
