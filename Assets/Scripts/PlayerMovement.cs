@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start()
 	{
+		controller.enabled = true;
 		animator = GetComponent<Animator>();
 		cameraT = Camera.main.transform;
 		controller = GetComponent<CharacterController>();
@@ -53,14 +54,23 @@ public class PlayerMovement : MonoBehaviour
 		{
             animator.SetBool("playMovement", true);
             animator.SetBool("playThrowBall", false);
-            animator.SetFloat("speedPercent", animationSpeedPercent, speedSmoothTime, Time.deltaTime);
+			animator.SetBool("playPickUp", false);
+			animator.SetFloat("speedPercent", animationSpeedPercent, speedSmoothTime, Time.deltaTime);
+		}
+
+		if (pickUp.playPickUp)
+		{
+			animator.SetBool("playMovement", false);
+			animator.SetBool("playThrowBall", false);
+			animator.SetBool("playPickUp", true);
 		}
 
 		if (pickUp.playThrow)
 		{
             animator.SetBool("playMovement", false);
             animator.SetBool("playThrowBall", true);
-        }
+			animator.SetBool("playPickUp", false);
+		}
 	}
 
 	void Move(Vector2 inputDir, bool running)
@@ -109,15 +119,34 @@ public class PlayerMovement : MonoBehaviour
 		return smoothTime / airControlPercent;
 	}
 
-    public void Release()
+	public void AttachToHand()
+	{
+		pickUp.PickingUp();
+	}
+
+	public void Release()
     {
         ballThrow.ReleaseMe();
         ballThrow.Throw();
+		pickUp.UnFreeze();
     }
 
     public void StopAnimation()
     {
         pickUp.playThrow = false;
+		pickUp.playPickUp = false;
         Debug.Log("Stopping anim");
+
+		startMovement();
     }
+
+	public void stopMovement()
+	{
+		controller.enabled = false;
+	}
+
+	public void startMovement()
+	{
+		controller.enabled = true;
+	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor.UIElements;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class ThirdPersonCamera : MonoBehaviour
 	public Transform target;
 	public float dstFromTarget = 2;
 	public Vector2 pitchMinMax = new Vector2(-40, 85); //Setting a min and max camera rotation clamp
+
+	public float minFov = 40f;
+	public float maxFov = 80f;
+	public float sensitivity = 100f;
 
 	public float rotationSmoothTime = .12f;
 	Vector3 rotationSmoothVelocity;
@@ -23,6 +28,15 @@ public class ThirdPersonCamera : MonoBehaviour
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 		}
+	}
+
+    void Update()
+	{
+		float fov = Camera.main.fieldOfView;
+
+		fov -= Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+		fov = Mathf.Clamp(fov, minFov, maxFov);
+		Camera.main.fieldOfView = fov;
 	}
 
 	void LateUpdate()

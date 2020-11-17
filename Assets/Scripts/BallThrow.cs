@@ -13,12 +13,25 @@ public class BallThrow : MonoBehaviour
 
     public PickUp pickUp;
 
-    public int throwForce = 5000;
-   // public throwDirection 
+    public AudioClip bounce;
+
+    public int throwForce;
+    public int throwHeight;
 
     void Start()
     {
         GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<AudioSource>().playOnAwake = false;
+        GetComponent<AudioSource>().clip = bounce;
+    }
+
+    void OnCollisionEnter (Collision col)
+    {
+        Debug.Log("colide");
+        if (col.gameObject.tag == "Floor")
+        {
+            GetComponent<AudioSource>().PlayOneShot(bounce);
+        }
     }
 
     public void ReleaseMe()
@@ -31,7 +44,9 @@ public class BallThrow : MonoBehaviour
 
     public void Throw()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
+        rig.AddForce(parentBone.transform.forward + Camera.main.transform.forward * throwForce, ForceMode.Impulse);
+        rig.AddForce(parentBone.transform.up + Camera.main.transform.up * throwHeight, ForceMode.Impulse);
+
         pickUp.isCarrying = false;
 
         Debug.Log("Add Force");
